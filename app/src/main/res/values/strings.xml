@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">SchoolApp</string>
+    <string name="please_fill_teacher_details">Please fill Teacher\'s Detailss</string>
+    <string name="close">Close Navigation</string>
+    <string name="logIn">LogIn</string>
+    <string name="signOut">SignOut</string>
+    <string name="contact">Contact</string>
+    <string name="gallery">Gallery</string>
+    <string name="don_t_have_an_account_sign_up">Don’t have an account? Sign up</string>
+    <string name="passInput">Password</string>
+    <string name="emailInput">Email</string>
+    <string name="please_sign_in_to_continue">Please sign in to continue.</string>
+    <string name="student_informaton">Student Informaton</string>
+    <string name="full_name">Full name</string>
+    <string name="father_s_name">Father\'s name</string>
+    <string name="mother_s_name">Mother\'s name</string>
+    <string name="student_phone_number">Student Phone Number</string>
+    <string name="parent_phone_number">Parent Phone Number</string>
+    <string name="age">Age</string>
+    <string name="clazz">Class</string>
+    <string name="date_of_birth">Date of Birth DD/MM/YYYY</string>
+    <string name="email_hint">Email</string>
+    <string name="phone">Phone</string>
+    <string name="item_name">Item Name</string>
+    <string name="teacher_details">Teacher Details</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="capture_teacher_image">Capture Image</string>
+    <string name="submit">Submit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_button">Menu Button</string>
+    <string name="schoolapp">SchoolApp</string>
+    <string name="sign_out">Sign out</string>
+    <string name="latest_updates">Latest Updates</string>
+    <string name="latest_update">Latest Update</string>
+    <string name="view_all">View All</string>
+    <string name="date_of_admission">Date of Admission</string>
+    <string name="roll_no">Roll No.</string>
+    <string name="name_">Name:</string>
+    <string name="father_name">"Father's Name : "</string>
+    <string name="roll_no_">"Roll No. : "</string>
+    <string name="_class">"Class : "</string>
+    <string name="full_details">Full Details</string>
+    <string name="delete">Delete</string>
+    <string name="id">"Id : "</string>
+    <string name="add_another">Add Another</string>
+    <string name="show_all">Show All</string>
+
+
+    <string-array name="clazz">
+        <item>Select Class</item>
+        <item>1st</item>
+        <item>2nd</item>
+        <item>3rd</item>
+        <item>4th</item>
+        <item>5th</item>
+        <item>6th</item>
+        <item>7th</item>
+        <item>8th</item>
+        <item>9th</item>
+        <item>10th</item>
+        <item>11th</item>
+        <item>12th</item>
+    </string-array>
+
+    <string-array name="stream">
+        <item>Select Stream</item>
+        <item>Medical</item>
+        <item>Non-Medical</item>
+        <item>Arts</item>
+        <item>Commerce</item>
+    </string-array>
+</resources>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".freagments.AddStudentsFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/studentInfoHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/student_informaton"
+            android:textColor="#000"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textAlignment="center" />
+
+        <!-- Name -->
+        <EditText
+            android:id="@+id/fullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/studentInfoHeader"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/input_background"
+            android:hint="@string/full_name"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:inputType="textPersonName"
+            android:importantForAccessibility="yes" />
+
+        <!-- Father's Name -->
+        <EditText
+            android:id="@+id/fatherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fullName"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/input_background"
+            android:hint="@string/father_s_name"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:inputType="textPersonName"
+            android:importantForAccessibility="yes" />
+
+        <!-- Mother's Name -->
+        <EditText
+            android:id="@+id/motherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fatherName"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/input_background"
+            android:hint="@string/mother_s_name"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:inputType="textPersonName"
+            android:importantForAccessibility="yes" />
+
+        <!-- Student Phone Number -->
+        <EditText
+            android:id="@+id/studentPhoneNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/motherName"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/input_background"
+            android:hint="@string/student_phone_number"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:inputType="phone"
+            android:importantForAccessibility="yes" />
+
+        <!-- Parent Phone Number -->
+        <EditText
+            android:id="@+id/parentPhoneNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/studentPhoneNo"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/input_background"
+            android:hint="@string/parent_phone_number"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:inputType="phone"
+            android:importantForAccessibility="yes" />
+
+        <!-- Age -->
+        <EditText
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/parentPhoneNo"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/input_background"
+            android:hint="@string/age"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:inputType="number"
+            android:importantForAccessibility="yes" />
+
+        <!-- Roll Number -->
+        <EditText
+            android:id="@+id/rollNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/age"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/input_background"
+            android:hint="@string/roll_no"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:inputType="text"
+            android:importantForAccessibility="yes" />
+
+        <!-- Date of Admission -->
+        <TextView
+            android:id="@+id/dateOfAdmission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rollNo"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/input_background"
+            android:hint="@string/date_of_admission"
+            android:padding="15dp"
+            android:textColor="#000"
+            android:importantForAccessibility="yes" />
+
+        <!-- Class -->
+        <Spinner
+            android:id="@+id/classInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dateOfAdmission"
+            android:background="@drawable/input_background"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:layout_marginBottom="16dp"
+            android:entries="@array/clazz"
+            android:importantForAccessibility="yes" />
+
+        <!-- Stream -->
+        <Spinner
+            android:id="@+id/streamInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/classInput"
+            android:background="@drawable/input_background"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            android:entries="@array/stream"
+            android:importantForAccessibility="yes" />
+
+        <!-- Submit Button -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_shape"
+            android:layout_below="@id/streamInput"
+            android:text="@string/submit"
+            android:textAlignment="center"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:id="@+id/submit_button"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:importantForAccessibility="yes" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/submit_button"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:visibility="gone"
+            android:id="@+id/showGoBtn"
+            android:background="@drawable/background_screen"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_another"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:background="@drawable/button_shape"
+                android:id="@+id/addAnother"
+                android:textAlignment="center"
+                android:layout_marginHorizontal="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/show_all"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:background="@drawable/button_shape"
+                android:id="@+id/showAll"
+                android:layout_marginHorizontal="10dp"
+                />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
