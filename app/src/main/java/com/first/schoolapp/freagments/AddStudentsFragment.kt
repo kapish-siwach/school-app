@@ -53,6 +53,7 @@ class AddStudentsFragment : Fragment() {
         val streamInput = binding.streamInput
         val submitButton = binding.submitButton
 
+
         // Load class array into Spinner
         val classAdapter = ArrayAdapter.createFromResource(
             requireContext(),
@@ -68,6 +69,7 @@ class AddStudentsFragment : Fragment() {
             R.array.stream,
             android.R.layout.simple_spinner_item
         )
+
         streamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.streamInput.adapter = streamAdapter
 

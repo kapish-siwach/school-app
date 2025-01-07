@@ -213,8 +213,10 @@
                 android:id="@+id/showAll"
                 android:layout_marginHorizontal="10dp"
                 />
-
-
         </LinearLayout>
+
+
+
     </RelativeLayout>
+
 </ScrollView>

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.first.schoolapp.R
 import com.first.schoolapp.entity.StudentsData
@@ -34,10 +35,9 @@ class StudentsAdaptor(
         holder.deleteButton.setOnClickListener {
             val id = student.id
             if (id.isNotEmpty()) {
-                // Call delete function in ViewModel
-                viewModel.deleteStudentByRollNo(id)
+                viewModel.deleteStudentById(id)
 
-                // Optionally update the list after deletion (notify adapter)
+                Toast.makeText(holder.itemView.context, "User Deleted Successfully", Toast.LENGTH_SHORT).show()
                 studentsList = studentsList.filter { it.id != id }
                 notifyItemRemoved(position)
             }

@@ -35,7 +35,7 @@ class AddStudentsViewModel(private val repository: StudentsRepository) : ViewMod
     suspend fun insert(item: StudentsData) = repository.insert(item)
     suspend fun delete(item: StudentsData) = repository.delete(item)
 
-    fun deleteStudentByRollNo(id: String) {
+    fun deleteStudentById(id: String) {
         viewModelScope.launch {
             repository.deleteByRollNo(id)
         }

@@ -8,8 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    >
+    tools:openDrawer="start">
 
     <!-- Main Content Area -->
     <LinearLayout
@@ -17,7 +16,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
+        <!-- Toolbar -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -25,7 +24,21 @@
             android:gravity="center"
             android:elevation="4dp">
 
+            <!-- Back Button -->
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/back"
+                android:src="@drawable/baseline_arrow_back_24"
+                android:visibility="gone"
 
+            />
+
+            <!-- Menu Button -->
             <ImageView
                 android:id="@+id/menubtn"
                 android:layout_width="40dp"
@@ -34,15 +47,16 @@
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="5dp"
                 android:contentDescription="@string/menu_button"
-                android:foregroundGravity="center"
                 android:src="@drawable/baseline_menu_24" />
 
+            <!-- Title -->
             <TextView
                 android:id="@+id/titleText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_toStartOf="@id/signOutBtn"
                 android:layout_toEndOf="@id/menubtn"
+                android:layout_alignStart="@+id/backBtn"
                 android:gravity="center"
                 android:text="@string/schoolapp"
                 android:textColor="@android:color/white"
@@ -62,15 +76,12 @@
                 android:textColor="@android:color/white" />
         </RelativeLayout>
 
+        <!-- Fragment Container -->
         <androidx.fragment.app.FragmentContainerView
-
             android:name="com.first.schoolapp.freagments.HomeFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/fragment_container"
-
-            />
-
+            android:id="@+id/fragment_container" />
     </LinearLayout>
 
     <!-- Navigation Drawer -->

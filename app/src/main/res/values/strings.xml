@@ -46,6 +46,7 @@
     <string name="id">"Id : "</string>
     <string name="add_another">Add Another</string>
     <string name="show_all">Show All</string>
+    <string name="back">Back</string>
 
 
     <string-array name="clazz">
