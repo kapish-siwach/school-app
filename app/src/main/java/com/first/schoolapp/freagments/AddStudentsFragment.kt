@@ -1,7 +1,6 @@
-package com.first.schoolapp.fragments
+package com.first.schoolapp.freagments
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,24 +14,27 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.first.schoolapp.R
-import com.first.schoolapp.databases.StudentsDatabase
+import com.first.schoolapp.databases.TeachersDatabse
 import com.first.schoolapp.databinding.FragmentAddStudentsBinding
 import com.first.schoolapp.entity.StudentsData
+import com.first.schoolapp.fragments.StudentsFragment
 import com.first.schoolapp.repos.StudentsRepository
 import com.first.schoolapp.viewmodel.AddStudentsViewModel
 import com.first.schoolapp.viewmodel.AddStudentsViewModelFactory
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 class AddStudentsFragment : Fragment() {
 
     private lateinit var binding: FragmentAddStudentsBinding
     private val repository: StudentsRepository by lazy {
-        StudentsRepository(StudentsDatabase.invoke(requireContext()))  // Pass context here
+        StudentsRepository(TeachersDatabse.invoke(requireContext()))  // Pass context here
     }
 
     private val viewModel: AddStudentsViewModel by viewModels {
-        val database = StudentsDatabase.invoke(requireContext())  // Pass context here as well
+        val database = TeachersDatabse.invoke(requireContext())  // Pass context here as well
         val repository = StudentsRepository(database)
         AddStudentsViewModelFactory(repository)
     }
@@ -74,7 +76,7 @@ class AddStudentsFragment : Fragment() {
         binding.streamInput.adapter = streamAdapter
 
         // Initially hide stream input if it's not 11th or 12th
-        streamInput.visibility = if (classInput.selectedItem.toString() == "11th" || classInput.selectedItem.toString() == "12th") {
+        streamInput.visibility = if (classInput.selectedItem.toString() == "11" || classInput.selectedItem.toString() == "12") {
             View.VISIBLE
         } else {
             View.GONE
@@ -85,7 +87,7 @@ class AddStudentsFragment : Fragment() {
             override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
                 val selectedItem = parentView?.getItemAtPosition(position).toString()
 
-                streamInput.visibility = if (selectedItem == "11th" || selectedItem == "12th") {
+                streamInput.visibility = if (selectedItem == "11" || selectedItem == "12") {
                     View.VISIBLE
                 } else {
                     View.GONE
@@ -115,7 +117,6 @@ class AddStudentsFragment : Fragment() {
             val studentPhoneNo = binding.studentPhoneNo.text.toString().trim()
             val parentPhoneNo = binding.parentPhoneNo.text.toString().trim()
             val age = binding.age.text.toString().trim()
-            val rollNo = binding.rollNo.text.toString().trim()
 
             val selectedClass = binding.classInput.selectedItem?.toString() ?: "Select Class"
             val selectedStream = binding.streamInput.selectedItem?.toString() ?: "Select Stream"
@@ -152,14 +153,11 @@ class AddStudentsFragment : Fragment() {
                 binding.parentPhoneNo.error = "Parent Phone Number cannot be empty"
                 isValid = false
             }
-            if (age.isEmpty()) {
-                binding.age.error = "Age cannot be empty"
+            if (age.isEmpty() || age.toIntOrNull() == null || age.toInt() !in 5..50) {
+                binding.age.error = "Enter a valid age (5-50)"
                 isValid = false
             }
-            if (rollNo.isEmpty()) {
-                binding.rollNo.error = "Roll Number cannot be empty"
-                isValid = false
-            }
+
 
             if (selectedClass == "Select Class") {
                 Toast.makeText(requireContext(), "Please select a valid class", Toast.LENGTH_SHORT).show()
@@ -178,20 +176,22 @@ class AddStudentsFragment : Fragment() {
 
             // Proceed if all fields are valid
             if (isValid) {
-                val student = StudentsData(
-                    studentName = studentName,
-                    fatherName = fatherName,
-                    motherName = motherName,
-                    studentPhoneNo = studentPhoneNo,
-                    parentPhoneNo = parentPhoneNo,
-                    age = age,
-                    rollNo = rollNo,
-                    dateOfAdmission = dateofAdmission.text.toString(),
-                    classInput = selectedClass,
-                    streamInput = selectedStream
-                )
-
                 lifecycleScope.launch {
+                    val rollNo = generateRollNo(selectedClass)
+
+                    val student = StudentsData(
+                        studentName = studentName,
+                        fatherName = fatherName,
+                        motherName = motherName,
+                        studentPhoneNo = studentPhoneNo,
+                        parentPhoneNo = parentPhoneNo,
+                        age = age,
+                        rollNo = rollNo,
+                        dateOfAdmission = binding.dateOfAdmission.text.toString(),
+                        classInput = selectedClass,
+                        streamInput = selectedStream
+                    )
+
                     repository.insert(student)
                     onFormSubmitted()
                 }
@@ -200,20 +200,41 @@ class AddStudentsFragment : Fragment() {
             }
         }
 
+
+
         binding.addAnother.setOnClickListener {
             // Reset all fields to default values
-           resetAllFields()
+            resetAllFields()
         }
 
         binding.showAll.setOnClickListener {
             resetAllFields()
             val studentsFragment = StudentsFragment()
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, studentsFragment) // Replace 'fragment_container' with your container's ID
-                .addToBackStack(null) // Optional, adds the transaction to the back stack
+                .replace(R.id.fragment_container, studentsFragment)
+                .addToBackStack(null)
                 .commit()
         }
     }
+
+    private suspend fun generateRollNo(selectedClass: String): String {
+        return withContext(Dispatchers.IO) {
+
+            val existingRollNos = repository.getRollNosByClass(selectedClass)
+
+
+            val existingRollNoNumbers = existingRollNos.mapNotNull {
+                it.removePrefix(selectedClass).toIntOrNull()
+            }
+
+
+            val newRollNoNumber = (existingRollNoNumbers.maxOrNull() ?: 0) + 1
+
+
+            return@withContext "$selectedClass$newRollNoNumber"
+        }
+    }
+
 
     private fun resetAllFields() {
 
@@ -224,11 +245,11 @@ class AddStudentsFragment : Fragment() {
         binding.parentPhoneNo.text.clear()
         binding.age.text.clear()
         binding.rollNo.text.clear()
-        binding.dateOfAdmission.text = "" // Reset the date
+        binding.dateOfAdmission.text = ""
 
-        binding.classInput.setSelection(0) // Reset to the default "Select Class"
-        binding.streamInput.setSelection(0) // Reset to the default "Select Stream"
-        binding.streamInput.visibility = View.GONE // Hide stream input unless needed
+        binding.classInput.setSelection(0)
+        binding.streamInput.setSelection(0)
+        binding.streamInput.visibility = View.GONE
 
         binding.submitButton.visibility = View.VISIBLE
         binding.showGoBtn.visibility = View.GONE

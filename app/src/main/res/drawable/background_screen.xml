@@ -8,9 +8,13 @@
         android:height="100dp"
         />
 
-    <gradient android:startColor="#9bc5c3"
-        android:endColor="#616161"
-
+    <gradient android:startColor="@color/whites"
+        android:endColor="@color/grayish"
+        />
+    <corners android:bottomLeftRadius="5dp"
+        android:bottomRightRadius="5dp"
+        android:topLeftRadius="5dp"
+        android:topRightRadius="5dp"
         />
   
 </shape>

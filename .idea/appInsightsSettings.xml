@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.first.schoolapp" />
+                  <option name="mobileSdkAppId" value="1:580222988488:android:e2347736809ddd5d6ef5fd" />
+                  <option name="projectId" value="experimentfireabase" />
+                  <option name="projectNumber" value="580222988488" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

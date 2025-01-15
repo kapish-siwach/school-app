@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".freagments.UpdateFragment">
+
+
+    <TextView
+        android:id="@+id/title_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:text="@string/todo" />
+
+
+    <EditText
+        android:id="@+id/addUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_update"
+        android:layout_marginHorizontal="20dp"
+        android:textColor="@color/black"
+        android:hint="@string/update_goes_here"
+        android:background="@drawable/input_background"
+        android:padding="10dp"
+        android:layout_marginTop="30dp"
+        android:inputType="textMultiLine"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/submitUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        android:layout_below="@+id/addUpdate"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_shape"
+        android:textAlignment="center"
+        android:padding="6dp"
+        android:textColor="@color/white"
+        />
+        
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addUpdateRecycler"
+        android:layout_below="@+id/submitUpdate"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="20dp"
+        tools:listitem="@layout/update_view"
+        android:layout_marginEnd="20dp" />
+
+
+</RelativeLayout>

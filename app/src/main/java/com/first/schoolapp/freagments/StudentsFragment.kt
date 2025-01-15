@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.first.schoolapp.adaptor.StudentsAdaptor
+import com.first.schoolapp.databases.TeachersDatabse
 import com.first.schoolapp.databinding.FragmentStudentsBinding
 import com.first.schoolapp.viewmodel.AddStudentsViewModel
 import com.first.schoolapp.viewmodel.AddStudentsViewModelFactory
 import com.first.schoolapp.repos.StudentsRepository
-import com.first.schoolapp.databases.StudentsDatabase
 
 class StudentsFragment : Fragment() {
 
@@ -32,7 +32,7 @@ class StudentsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Initialize the ViewModel with a Factory
-        val database = StudentsDatabase(requireContext())
+        val database = TeachersDatabse(requireContext())
         val repository = StudentsRepository(database)
         val factory = AddStudentsViewModelFactory(repository)
         addStudentsViewModel = ViewModelProvider(this, factory).get(AddStudentsViewModel::class.java)

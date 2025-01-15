@@ -19,10 +19,12 @@ class AddStudentsViewModel(private val repository: StudentsRepository) : ViewMod
     private val _studentsData = MutableLiveData<List<StudentsData>>()
     val studentsData: LiveData<List<StudentsData>> get() = _studentsData
 
+    private val _selectedStudent = MutableLiveData<StudentsData?>()
+    val selectedStudent: LiveData<StudentsData?> get() = _selectedStudent
+
     init {
         fetchStudentsData()
     }
-
 
     fun fetchStudentsData() {
         viewModelScope.launch {
@@ -33,14 +35,25 @@ class AddStudentsViewModel(private val repository: StudentsRepository) : ViewMod
     }
 
     suspend fun insert(item: StudentsData) = repository.insert(item)
+
     suspend fun delete(item: StudentsData) = repository.delete(item)
 
-    fun deleteStudentById(id: String) {
+    fun deleteStudentById(id: Int) {
         viewModelScope.launch {
             repository.deleteByRollNo(id)
         }
     }
 
+
+    fun setSelectedStudent(student: StudentsData) {
+        _selectedStudent.value = student
+    }
+
+    fun updateStudentDetails(student: StudentsData) {
+        viewModelScope.launch {
+            repository.update(student)
+        }
+    }
 
     fun setDate(year: Int, month: Int, day: Int) {
         val calendar = Calendar.getInstance()
@@ -49,17 +62,17 @@ class AddStudentsViewModel(private val repository: StudentsRepository) : ViewMod
         val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         _selectedDate.value = formatter.format(calendar.time)
     }
+
+
 }
 
-
 class AddStudentsViewModelFactory(private val repository: StudentsRepository) :
-        ViewModelProvider.NewInstanceFactory() {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                if (modelClass.isAssignableFrom(AddStudentsViewModel::class.java)){
-                    return AddStudentsViewModel(repository) as T
-                }else{
-                    throw IllegalArgumentException("Unknown ViewModel class")
-                }
-
-            }
+    ViewModelProvider.NewInstanceFactory() {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(AddStudentsViewModel::class.java)) {
+            return AddStudentsViewModel(repository) as T
+        } else {
+            throw IllegalArgumentException("Unknown ViewModel class")
         }
+    }
+}

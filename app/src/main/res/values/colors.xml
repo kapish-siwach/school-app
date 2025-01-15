@@ -4,4 +4,27 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_gray">#EEE</color>
     <color name="grey">#EEE</color>
+    <color name="start_blue">#3560B4</color>
+    <color name="end_blue">#4778CA</color>
+    <color name="whites">#fefefe</color>
+    <color name="grayish">#efefef</color>
+    <color name="blueish">#5378C0</color>
+    <color name="colorDarkGreen">#388E3C</color>
+    <color name="colorDarkBlue">#1976D2</color>
+    <color name="colorDarkRed">#D32F2F</color>
+    <color name="colorDarkPurple">#7B1FA2</color>
+    <color name="colorDarkYellow">#FBC02D</color>
+    <color name="colorDarkGreyBlue">#455A64</color>
+    <color name="colorDarkCyan">#0097A7</color>
+    <color name="colorDarkOrange">#F57C00</color>
+    <color name="colorDarkBrown">#5D4037</color>
+    <color name="colorDarkIndigo">#303F9F</color>
+    <color name="colorDarkPink">#C2185B</color>
+    <color name="teal_700">#018786</color>
+    <color name="red">#FF0000</color>
+    <color name="background_light">#F5F5F5</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="gray">#BDBDBD</color>
+
 </resources>

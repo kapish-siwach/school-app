@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/dialogStudentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name__"
+        android:textSize="16sp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/dialogFatherName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/father_name_"
+        android:textSize="16sp"
+        android:layout_below="@id/dialogStudentName"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/dialogMotherName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mother_name_"
+        android:textSize="16sp"
+        android:layout_below="@id/dialogFatherName"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/dialogRollNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/roll_no_"
+        android:textSize="16sp"
+        android:layout_below="@id/dialogMotherName"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/dialogStudentPhoneNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/student_phone_no_"
+        android:textSize="16sp"
+        android:layout_below="@id/dialogRollNo"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/dialogParentPhoneNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/parent_phone_no_"
+        android:textSize="16sp"
+        android:layout_below="@id/dialogStudentPhoneNo"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/dialogAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/age_"
+        android:textSize="16sp"
+        android:layout_below="@id/dialogParentPhoneNo"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/dialogDateOfAdmission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_of_admission_"
+        android:textSize="16sp"
+        android:layout_below="@id/dialogAge"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/dialogStreamInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stream_"
+        android:textSize="16sp"
+        android:layout_below="@id/dialogDateOfAdmission"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialogStreamInput"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/dialogDeleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:background="@color/red"
+            android:layout_margin="8dp"
+            android:clickable="true" />
+    </LinearLayout>
+</RelativeLayout>

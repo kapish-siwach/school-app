@@ -2,15 +2,13 @@ package com.first.schoolapp.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.first.schoolapp.R
+import androidx.lifecycle.lifecycleScope
 import com.first.schoolapp.databinding.ActivitySplashBinding
 import com.first.schoolapp.loginSignup.PreferenceManager
 import com.first.schoolapp.loginSignup.SignupActivity
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
@@ -18,20 +16,17 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivitySplashBinding.inflate(layoutInflater)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        preferenceManager=PreferenceManager(this)
+        preferenceManager = PreferenceManager(this)
 
-        Handler().postDelayed({
-            val signupIntent=Intent(this, SignupActivity::class.java)
-            val mainIntent=Intent(this, MainActivity::class.java)
-            if (preferenceManager.isLoggedIn()){
-                startActivity(mainIntent)
-            }else{
-                startActivity(signupIntent)
-            }
+        // Splash delay and redirection
+        lifecycleScope.launch {
+            delay(500)
+            val nextActivity = if (preferenceManager.isLoggedIn()) MainActivity::class.java else SignupActivity::class.java
+            startActivity(Intent(this@SplashActivity, nextActivity))
             finish()
-        },500)
+        }
     }
 }

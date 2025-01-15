@@ -11,8 +11,31 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.first.schoolapp.R
 import com.first.schoolapp.entity.Services
+import kotlin.math.absoluteValue
 
-class ItemsAdaptor(private var items:List<Services>, private val onClick:(Services)-> Unit):RecyclerView.Adapter<ItemsAdaptor.ServiceViewHolder>() {
+import androidx.core.content.ContextCompat
+
+class ItemsAdaptor(
+    private var items: List<Services>,
+    private val onClick: (Services) -> Unit
+) : RecyclerView.Adapter<ItemsAdaptor.ServiceViewHolder>() {
+
+    private val colors = listOf(
+        R.color.colorDarkGreen,
+        R.color.colorDarkBlue,
+        R.color.colorDarkRed,
+        R.color.colorDarkPurple,
+        R.color.colorDarkYellow,
+        R.color.colorDarkGreyBlue,
+        R.color.colorDarkCyan,
+        R.color.colorDarkOrange,
+        R.color.colorDarkBrown,
+        R.color.colorDarkIndigo,
+        R.color.colorDarkPink
+    )
+
+    private var colorIndex = 0
+
     inner class ServiceViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val catName: TextView = view.findViewById(R.id.catName)
         val catImg: ImageView = view.findViewById(R.id.catImg)
@@ -31,32 +54,21 @@ class ItemsAdaptor(private var items:List<Services>, private val onClick:(Servic
         val item = items[position]
         holder.catName.text = item.title
         holder.catImg.setImageResource(item.img)
+
+        // Assign sequential colors
+        val colorRes = colors[colorIndex]
+        colorIndex = (colorIndex + 1) % colors.size // Increment and reset after the last color
+        val color = ContextCompat.getColor(holder.itemView.context, colorRes)
+
+        // Set background color
         val background = holder.itemView.background
         if (background is GradientDrawable) {
-            val randomColor = getRandomColor()
-            background.setColor(randomColor)
+            background.setColor(color)
         }
 
         holder.itemView.setOnClickListener {
             onClick(item)
         }
-    }
-
-    private fun getRandomColor(): Int {
-        val colors = listOf(
-            Color.parseColor("#4CAF50"),
-            Color.parseColor("#2196F3"),
-            Color.parseColor("#FF5722"),
-            Color.parseColor("#9C27B0"),
-            Color.parseColor("#FFC107"),
-            Color.parseColor("#607D8B"),
-            Color.parseColor("#00BCD4"),
-            Color.parseColor("#FF9800"),
-            Color.parseColor("#795548"),
-            Color.parseColor("#3F51B5"),
-            Color.parseColor("#E91E63")
-        )
-        return colors.random()
     }
 
     @SuppressLint("NotifyDataSetChanged")
