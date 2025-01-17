@@ -1,5 +1,6 @@
 package com.first.schoolapp.adaptor
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
@@ -51,6 +52,7 @@ class StudentsAdaptor(
         notifyDataSetChanged()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun showStudentDetailsDialog(context: android.content.Context, student: StudentsData) {
         val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_student_details, null)
         val dialogBuilder = AlertDialog.Builder(context).setView(dialogView)
